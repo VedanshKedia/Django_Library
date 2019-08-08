@@ -2,94 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78c8a381-3e96-4962-b8d0-0cbce6148fe6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.coverage" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.coveragerc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraryproject.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/docs/Book 3.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/migrations/0002_auto_20190806_1047.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/migrations/0003_auto_20190807_0606.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/migrations/0004_auto_20190807_1111.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/base_generic.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/author_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/author_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/author_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/author_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/book_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/book_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/book_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/book_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/book_renew_librarian.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/bookinstance_list_borrowed.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/bookinstance_list_borrowed_user.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/catalog/email_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/registration/logged_out.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/registration/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/registration/password_reset_complete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/registration/password_reset_confirm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/registration/password_reset_done.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/registration/password_reset_email.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/registration/password_reset_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/templates/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/tests/test_forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/tests/test_models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/tests/test_views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalog/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog___init___py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_admin_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_forms_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_migrations_0001_initial_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_migrations_0002_auto_20190806_1047_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_migrations_0003_auto_20190807_0606_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_migrations___init___py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_models_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_tests___init___py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_tests_test_forms_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_tests_test_models_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_tests_test_views_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_urls_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/catalog_views_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/coverage_html.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/jquery.ba-throttle-debounce.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/jquery.hotkeys.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/jquery.isonscreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/jquery.tablesorter.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/keybd_closed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/keybd_open.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/libraryproject___init___py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/libraryproject_settings_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/libraryproject_urls_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/manage_py.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/status.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/htmlcov/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraryproject/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraryproject/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraryproject/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraryproject/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/authors/temp.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/books/profile_pic_fake.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/books/temp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,18 +31,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="123" column="23" selection-start-line="123" selection-start-column="16" selection-end-line="123" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/catalog/tests/test_views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
@@ -146,12 +48,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libraryproject/wsgi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-111" />
           </provider>
         </entry>
       </file>
@@ -270,6 +179,7 @@
         <option value="$PROJECT_DIR$/catalog/tests/test_views.py" />
         <option value="$PROJECT_DIR$/catalog/templates/catalog/bookinstance_list_borrowed.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
   </component>
@@ -290,6 +200,11 @@
           <expand>
             <path>
               <item name="libraryproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="libraryproject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="libraryproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="libraryproject" type="462c0819:PsiDirectoryNode" />
               <item name="libraryproject" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -367,18 +282,18 @@
       <updated>1564055165160</updated>
       <workItem from="1564055200861" duration="49333000" />
       <workItem from="1564731099386" duration="79434000" />
-      <workItem from="1565259158127" duration="1223000" />
+      <workItem from="1565259158127" duration="2434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129990000" />
+    <option name="totallyTimeSpent" value="131201000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="726" y="0" width="746" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31831396" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31831396" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -392,7 +307,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.44790256" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.60622466" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -724,11 +639,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraryproject/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-111" />
       </provider>
     </entry>
   </component>
