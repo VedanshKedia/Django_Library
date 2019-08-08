@@ -25,7 +25,9 @@ SECRET_KEY = 'zh*#dwb0f$8hs^_&wbl9hd)-q&s%0si!f+u%1426h57^-qq^@2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://vedanshlibrary.herokuapp.com']
+ALLOWED_HOSTS = ['https://vedanshlibrary.herokuapp.com',
+                 'vedanshlibrary.herokuapp.com',
+                 ]
 
 
 # Application definition
