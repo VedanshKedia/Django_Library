@@ -1,0 +1,52 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Book List</h1>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <form class="form form-row" method="get" action="">
+                <input
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                name="search">
+                <button type="submit" class="btn-primary">Search</button>
+            </form>
+        </div>
+        <div class="col">
+            {% if request.GET.search %}<a href="{% url 'books' %}">All Books</a> {% endif %}
+        </div>
+        <div class="col">
+            <a href="{% url 'book_create' %}">Add New Book</a>
+        </div>
+    </div>
+
+
+    {% if book_list %}
+        <table class="table table-striped">
+            {% for book in object_list %}
+                <tr class="row">
+                    <td class="col-sm-3">
+                        <img src="{{ book.image.url }}" class="list-image">
+                    </td>
+                    <td class="col-sm-5">
+                        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+                    </td>
+                    {% if request.user.is_superuser %}
+                        <td class="col-sm-2">
+                            <a href="{% url 'book_delete' book.pk %}">delete</a>
+                        </td>
+                        <td class="col-sm-2">
+                            <a href="{% url 'book_update' book.pk %}">update</a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>There are no books in the library.</p>
+    {% endif %}
+{% endblock %}
+
+{#{% block pagination %}{% endblock %}#}

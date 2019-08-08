@@ -1,0 +1,57 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>Author List</h1>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <form class="form" method="get" action="">
+                <input
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                name="search">
+                <button type="submit" class="btn-primary">Search</button>
+            </form>
+        </div>
+        <div class="col">
+            {% if request.GET.search %}<a href="{% url 'authors' %}">All Authors</a> {% endif %}
+        </div>
+        <div class="col">
+            <a href="{% url 'author_create' %}">Add New Author</a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        {% if author_list %}
+            <table class="col-sm-12 table table-striped">
+                {% for author in author_list %}
+                    <tr class="row">
+                        <td class="col-sm-3">
+                            <img src="{{ author.image.url }}" class="list-image">
+                        </td>
+
+                        <td class="col-sm-5">
+                            <a href="{{ author.get_absolute_url }}">{{ author.first_name}} {{ author.last_name }}</a> ({{book.author}})
+                        </td>
+
+                        {% if request.user.is_superuser %}
+                            <td class="col-sm-2">
+                                <a href="{% url 'author_delete' author.pk %}">delete</a>
+                            </td>
+
+                            <td class="col-sm-2">
+                                <a href="{% url 'author_update' author.pk %}">update</a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>There are no authors in the library.</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{ author.image.url }}">
+        </div>
+        <div class="col-sm-8">
+            <h1>Name: {{ author.first_name }} {{ author.last_name }}</h1>
+            <p><strong>Date of Birth:</strong> {{ author.date_of_birth }}</p>
+            <p><strong>Date of Death:</strong> {{ author.date_of_death }}</p>
+        </div>
+    </div>
+{#  <div style="margin-left:20px;margin-top:20px">#}
+{#    <h4>Copies</h4>#}
+{##}
+{#    {% for copy in author.authorinstance_set.all %}#}
+{#      <hr>#}
+{#    {% endfor %}#}
+{#  </div>#}
+{% endblock %}
