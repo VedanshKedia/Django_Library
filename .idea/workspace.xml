@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78c8a381-3e96-4962-b8d0-0cbce6148fe6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,36 +57,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libraryproject/wsgi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-111" />
+            <state relative-caret-position="59">
+              <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+            </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog/templates/catalog/bookinstance_list_borrowed_user.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libraryproject/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+            <state relative-caret-position="-1664">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog/templates/catalog/email_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog/templates/index.html">
+        <entry file="file://$PROJECT_DIR$/runtime.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -158,7 +156,6 @@
         <option value="$PROJECT_DIR$/catalog/templates/catalog/book_form.html" />
         <option value="$PROJECT_DIR$/catalog/templates/catalog/book_confirm_delete.html" />
         <option value="$PROJECT_DIR$/catalog/templates/signup.html" />
-        <option value="$PROJECT_DIR$/libraryproject/settings.py" />
         <option value="$PROJECT_DIR$/catalog/urls.py" />
         <option value="$PROJECT_DIR$/libraryproject/urls.py" />
         <option value="$PROJECT_DIR$/catalog/tests/__init__.py" />
@@ -180,6 +177,9 @@
         <option value="$PROJECT_DIR$/catalog/templates/catalog/bookinstance_list_borrowed.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/libraryproject/wsgi.py" />
+        <option value="$PROJECT_DIR$/runtime.txt" />
+        <option value="$PROJECT_DIR$/libraryproject/settings.py" />
       </list>
     </option>
   </component>
@@ -282,18 +282,17 @@
       <updated>1564055165160</updated>
       <workItem from="1564055200861" duration="49333000" />
       <workItem from="1564731099386" duration="79434000" />
-      <workItem from="1565259158127" duration="2434000" />
+      <workItem from="1565259158127" duration="5196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131201000" />
+    <option name="totallyTimeSpent" value="133963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="726" y="0" width="746" height="870" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31831396" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31831396" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -307,7 +306,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.60622466" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.34641406" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -459,13 +458,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/media/books/temp.jpg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraryproject/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="141" column="3" selection-start-line="141" selection-start-column="3" selection-end-line="141" selection-end-column="3" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraryproject/urls.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -655,7 +647,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/libraryproject/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-111" />
+        <state relative-caret-position="59">
+          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runtime.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libraryproject/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1664">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
       </provider>
     </entry>
   </component>
