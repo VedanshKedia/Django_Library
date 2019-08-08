@@ -146,6 +146,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# print(STATIC_ROOT)
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
