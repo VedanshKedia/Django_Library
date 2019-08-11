@@ -107,7 +107,7 @@ class AuthorListView(LoginRequiredMixin, generic.ListView):
         return object_list
 
 
-class AuthorDetailView(generic.DetailView):
+class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Author
 
 
@@ -217,6 +217,7 @@ class BookDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user.is_superuser
 
 
+@login_required
 def emailview(request, pk):
     book = get_object_or_404(Book, pk=pk)
     if request.method == 'POST':
