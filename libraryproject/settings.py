@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'catalog',
+    'improve',
+    'embed_video',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +67,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'catalog/templates'),
+            os.path.join(BASE_DIR, 'improve/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -181,3 +184,11 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 django_heroku.settings(locals())
+
+
+EMBED_VIDEO_BACKENDS = (
+    'embed_video.backends.YoutubeBackend',
+    'embed_video.backends.VimeoBackend',
+    'embed_video.backends.SoundCloudBackend',
+    # 'improve.backends.CustomBackend',
+)

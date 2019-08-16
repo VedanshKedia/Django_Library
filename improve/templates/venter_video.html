@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+{#{% block content %}#}
+{#    {% load embed_video_tags %}#}
+{##}
+{#    {% video my_video %}#}
+{#        URL: {{ my_video.url }}#}
+{#        Thumbnail: {{ my_video.thumbnail }}#}
+{#        Backend: {{ my_video.backend }}#}
+{#        {% video my_video 'large' %}#}
+{#    {% endvideo %}#}
+{#{% endblock %}#}
+{% block content %}
+    {% if my_videos %}
+        {% for video in my_videos %}
+            <iframe
+                width="560"
+                height="315"
+                src={{ video }}
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+
+            </iframe>
+        {% endfor %}
+
+    {% endif %}
+{% endblock %}
+
+
+
+{#---------working-----------------#}
+
+
+
+{#{% block content %}#}
+{#<iframe width="560" height="315" src="https://www.youtube.com/embed/4HBmdexe7-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>#}
+{##}
+{#</iframe>#}
+{#{% endblock %}#}

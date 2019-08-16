@@ -23,30 +23,57 @@
     </div>
 
 
+{#    {% if book_list %}#}
+{#        <table class="table table-striped">#}
+{#            {% for book in object_list %}#}
+{#                <tr class="row">#}
+{#                    <td class="col-sm-3">#}
+{#                        <img src="{{ book.image.url }}" class="list-image">#}
+{#                    </td>#}
+{#                    <td class="col-sm-5">#}
+{#                        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})#}
+{#                    </td>#}
+{#                    {% if request.user.is_superuser %}#}
+{#                        <td class="col-sm-2">#}
+{#                            <a href="{% url 'book_delete' book.pk %}">delete</a>#}
+{#                        </td>#}
+{#                        <td class="col-sm-2">#}
+{#                            <a href="{% url 'book_update' book.pk %}">update</a>#}
+{#                        </td>#}
+{#                    {% endif %}#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#        </table>#}
+{#    {% else %}#}
+{#        <p>There are no books in the library.</p>#}
+{#    {% endif %}#}
+
     {% if book_list %}
-        <table class="table table-striped">
-            {% for book in object_list %}
-                <tr class="row">
-                    <td class="col-sm-3">
-                        <img src="{{ book.image.url }}" class="list-image">
-                    </td>
-                    <td class="col-sm-5">
-                        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
-                    </td>
-                    {% if request.user.is_superuser %}
-                        <td class="col-sm-2">
-                            <a href="{% url 'book_delete' book.pk %}">delete</a>
-                        </td>
-                        <td class="col-sm-2">
-                            <a href="{% url 'book_update' book.pk %}">update</a>
-                        </td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>There are no books in the library.</p>
+        <div class="row">
+        {% for book in object_list %}
+            <div class="col-sm-3">
+                <div class="card">
+                    <img src="{{ book.image.url }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ book.get_absolute_url }}">
+                                {{ book.title }}
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="card-footer">
+                        {{ book.author.first_name }} &nbsp;
+                        {{ book.author.last_name }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
     {% endif %}
+
+
+
+
 {% endblock %}
 
 {#{% block pagination %}{% endblock %}#}

@@ -1,0 +1,105 @@
+{% extends "base_generic.html" %}
+
+{% block scripts %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        google.charts.setOnLoadCallback(novelChart);
+
+        function drawChart() {
+            // Define the chart to be drawn.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Categories');
+            data.addColumn('number', 'Count');
+            data.addRows({{ data_list | safe }});
+
+            var options = {
+                title: "Number of responses per category",
+                width: 1000,
+                height: 400,
+                bar: {groupWidth: "75%"},
+                legend: { position: "in" },
+                hAxis: {title: "Categories", titleTextStyle:{bold: 1}},
+                vAxis:{title:"Count", titleTextStyle: {bold: 1}},
+            };
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('my_data'));
+            chart.draw(data, options);
+        }
+
+        function novelChart() {
+            // Define the chart to be drawn.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Categories');
+            data.addColumn('number', 'Count');
+            data.addRows({{ novel_data_list | safe }});
+
+            var options = {
+                title: "Number of responses per category",
+                width: 1000,
+                height: 400,
+                bar: {groupWidth: "75%"},
+                legend: { position: "in" },
+                hAxis: {title: "Categories", titleTextStyle:{bold: 1}},
+                vAxis:{title:"Count", titleTextStyle: {bold: 1}},
+                isStacked: true,
+            };
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('my_novel'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script>
+        {#document.getElementById("demo").innerHTML = "vedansh";#}
+    </script>
+{% endblock %}
+
+{% block content %}
+    <!-- Identify where the chart should be drawn. -->
+    <div id="my_data">
+
+    </div>
+    <div id="my_novel">
+
+    </div>
+
+{#    <div id="demo">#}
+{#    {{ data_list }}#}
+{#    </div>#}
+{#<script>#}
+{#document.getElementById("demo").innerHTML = "{{ data_list }}";#}
+{##}
+{#google.charts.load('current', {packages: ['corechart']});#}
+{#        google.charts.setOnLoadCallback(drawChart);#}
+{##}
+{#        function drawChart() {#}
+{#            // Define the chart to be drawn.#}
+{#            var data = new google.visualization.DataTable();#}
+{#            data.addColumn('string', 'Element');#}
+{#            data.addColumn('number', 'Percentage');#}
+{#            data.addRows({{ data_list | safe }});#}
+{##}
+{#            // Instantiate and draw the chart.#}
+{#            var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));#}
+{#            chart.draw(data, null);#}
+{##}
+            {#df = {{ data_list | safe }}#}
+{##}
+{#            document.getElementById("demo").innerHTML = data;#}
+{#        }#}
+{##}
+{##}
+{#</script>#}
+
+
+{#    <div id="demo"/>#}
+
+
+
+{% endblock %}
+
+

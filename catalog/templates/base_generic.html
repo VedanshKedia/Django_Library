@@ -8,75 +8,82 @@
     {% block title %}<title>Local Library</title>{% endblock %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    {% block scripts %}{% endblock %}
+
 </head>
 <body>
-<div class="container-fluid">
+
+
+
+    {% block sidebar %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'index' %}">Library</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{% url 'improve-home' %}">improve</a>
+                    </li>
+
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'books' %}">All Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'authors' %}">All authors</a>
+                        </li>
+                        {% if request.user.is_staff %}
+                            <li class="nav-item">
+                                <a href="{% url 'borrowed' %}" class="nav-link">
+                                    All Borrowed
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ request.user }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'my-borrowed' %}">My Borrowed</a>
+                                <a class="dropdown-item" href="{% url 'logout'%}?next={{request.path}}">Log Out</a>
+                {#                     <div class="dropdown-divider"></div>#}
+                {#                     <a class="dropdown-item" href="#">Something else here</a>#}
+                            </div>
+                        </li>
+
+                    {% else %}
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login/SignUp
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'login'%}?next={{request.path}}">Login</a>
+                            <a class="dropdown-item" href="{% url 'signup'%}?next={{request.path}}">SignUp</a>
+                {#          <div class="dropdown-divider"></div>#}
+                {#          <a class="dropdown-item" href="#">Something else here</a>#}
+                        </div>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+    {% endblock %}
+
+
 
 
 
 {#---------------------------------------------------------------------------------------------#}
 
-    {% block sidebar %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{% url 'index' %}">Library</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
-          </li>
-
-         {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'books' %}">All Books</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'authors' %}">All authors</a>
-              </li>
-
-             {% if request.user.is_staff %}
-                  <li class="nav-item">
-                      <a href="{% url 'borrowed' %}" class="nav-link">
-                          All Borrowed
-                      </a>
-                  </li>
-              {% endif %}
-
-              <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ request.user }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="{% url 'my-borrowed' %}">My Borrowed</a>
-                              <a class="dropdown-item" href="{% url 'logout'%}?next={{request.path}}">Log Out</a>
-        {#                      <div class="dropdown-divider"></div>#}
-        {#                      <a class="dropdown-item" href="#">Something else here</a>#}
-                        </div>
-              </li>
-
-
-          {% else %}
-
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Login/SignUp
-                    </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'login'%}?next={{request.path}}">Login</a>
-                  <a class="dropdown-item" href="{% url 'signup'%}?next={{request.path}}">SignUp</a>
-        {#          <div class="dropdown-divider"></div>#}
-        {#          <a class="dropdown-item" href="#">Something else here</a>#}
-                </div>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
-
-    {% endblock %}
-{#-----------------------------------------------------------------------------#}
-
+<div class="container-fluid">
     <div class="row">
 
         <div class="col-sm-12">
