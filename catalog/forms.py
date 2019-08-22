@@ -2,7 +2,7 @@ from django import forms
 import datetime
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
-from catalog.models import BookInstance, FAV_BOOK_CHOICES, Profile
+from catalog.models import BookInstance, Profile
 from django.core.validators import FileExtensionValidator, RegexValidator
 
 

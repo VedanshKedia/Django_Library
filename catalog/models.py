@@ -115,10 +115,6 @@ class Language(models.Model):
         return self.name
 
 
-#
-FAV_BOOK_CHOICES = [(book['title'], book['title']) for book in Book.objects.values('title')]
-
-
 class FavBooks(models.Model):
     fav_book = models.CharField(max_length=100, blank=True, null=True)
 
