@@ -11,3 +11,19 @@ img {
 .row {
     padding-top: 10px;
 }
+
+ul.errorlist {
+    display: none;
+}
+
+/*.form-group.fav_book2{*/
+/*    display: none;*/
+/*}*/
+
+/*.fav_book1{*/
+
+/*}*/
+
+/*button#select_list {*/
+/*    display: none;*/
+/*}*/

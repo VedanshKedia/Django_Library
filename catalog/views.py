@@ -1,13 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from catalog.models import Book, Author, BookInstance
+from catalog.models import Book, Author, BookInstance, Profile, FavBooks
 from django.views import generic
 from django.views.generic import View
+from django.views.generic.edit import FormView, CreateView, DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth import login, authenticate
-from catalog.forms import RenewBookForm, EmailForm, SearchForm
+from catalog.forms import RenewBookForm, EmailForm, SearchForm, ProfileForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import datetime
@@ -15,8 +16,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.core.mail import EmailMessage
 from django.db.models import Q
+from django.shortcuts import render, HttpResponseRedirect, reverse, redirect
+from django.contrib.auth.models import User
 from functools import reduce
 import operator
+import json
 # from django.http import HttpResponse
 # from django.http import request
 # Create your views here.
@@ -40,6 +44,7 @@ class SignUp(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
+
 
 # try to make this a class-based view and include mixin for authentication
 @login_required
@@ -237,6 +242,160 @@ def emailview(request, pk):
     else:
         form = EmailForm()
         return render(request, 'catalog/email_form.html', {'form': form})
+
+
+# @login_required
+# def profile_form(request):
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST)
+#
+#         # if form.is_valid():
+#
+
+
+class ProfileView(LoginRequiredMixin, UpdateView):
+    model = Profile
+    template_name = 'catalog/profile.html'
+    form_class = ProfileForm
+    success_url = '/catalog/'
+    # fields = ['image', 'number', 'fav_book',]
+
+    # user_instance = Profile.objects.filter(user=req)
+
+    # def get(self, request, *args, **kwargs):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['books'] = Book.objects.all()
+        return context
+
+    # def get(self, request, *args, **kwargs):
+    #     if Profile.objects.get(user=request.user):
+
+    def post(self, request, *args, **kwargs):
+        # fav_book_list = []
+        form = ProfileForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            image = form.cleaned_data["image"]
+            number = form.cleaned_data["number"]
+            fav_book_list = request.POST.get("fav_book_list")
+            fav_book_list = json.loads(fav_book_list)
+            for fav_book in fav_book_list:
+                print(fav_book)
+                print("\n",FavBooks.objects.filter(fav_book=fav_book))
+                print("\n",bool(FavBooks.objects.filter(fav_book=fav_book)))
+                if bool(FavBooks.objects.filter(fav_book=fav_book)):
+                    pass
+                else:
+                    FavBooks.objects.create(fav_book=fav_book)
+
+            fav_book_object = FavBooks.objects.filter(fav_book__in=fav_book_list)
+
+            print("--------------------------------------------\n")
+            print(fav_book_object)
+            print("--------------------------------------------\n")
+
+            profile_object = Profile.objects.get(user=request.user)
+
+            profile_object.image = image
+            profile_object.number = number
+
+            profile_object.fav_book.set(fav_book_object)
+
+            profile_object.save()
+
+
+            # profile_data = Profile.objects.filter(user=request.user).update(
+            #     image=image,
+            #     number=number,
+            #     fav_book=fav_book_object,
+            # )
+
+            # profile_data.fav_book.set(fav_books_)
+
+        return HttpResponseRedirect(reverse('my-borrowed'))
+
+        # return super().form_valid(form)
+    # def form_valid(self, form):
+
+        # form.instance.created_by = self.request.user
+
+
+    # def get(self, request, *args, **kwargs):
+    #     if Profile.objects.get(user=request.user):
+    #         return render(request, self.template_name, context={''})
+
+
+    # ------------------------------------------------------------------------
+
+    # def post(self, request, *args, **kwargs):
+    #     form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+    #     print(Profile.objects.get(user=request.user))
+    #     if Profile.objects.get(user=request.user):
+    #         if form.is_valid():
+    #             image = form.cleaned_data['image']
+    #             number = form.cleaned_data['number']
+    #             print("\n\n-----------------\n\n", form.cleaned_data['fav_book'])
+    #             # fav_book = FavBooks.objects.filter(fav_book__icontains=form.cleaned_data['fav_book'])
+    #             # print("\n\n-----------------\n\n", fav_book)
+    #             fav_book = form.cleaned_data['fav_book']
+    #             fav_books = FavBooks.objects.filter(fav_book__in=fav_book)
+    #             profile_data = Profile.objects.create(
+    #                 user=request.user,
+    #                 image=image,
+    #                 number=number,
+    #                 # fav_book=fav_book,
+    #             )
+    #             profile_data.fav_book.set(fav_books)
+    #             profile_data.save()
+    #             return HttpResponseRedirect(reverse('my-borrowed'))
+    #         else:
+    #             return render(request, 'catalog/profile.html', {'form_errors': form.errors, 'form': form})
+    #
+    #     else:
+    #         if form.is_valid():
+    #
+    #             image = form.cleaned_data['image']
+    #             number = form.cleaned_data['number']
+    #             print("\n\n-----------------\n\n", form.cleaned_data['fav_book'])
+    #             # fav_book = FavBooks.objects.filter(fav_book__icontains=form.cleaned_data['fav_book'])
+    #             # print("\n\n-----------------\n\n", fav_book)
+    #             fav_book = form.cleaned_data['fav_book']
+    #             profile_data = Profile.objects.create(
+    #                 # user=User.objects.get(pk=request.user_id),
+    #                 user=request.user,
+    #                 image=image,
+    #                 number=number,
+    #                 fav_book=fav_book,
+    #             )
+    #
+    #             profile_data.save()
+    #             return HttpResponseRedirect(reverse('my-borrowed'))
+    #         else:
+    #             return render(request, 'catalog/profile.html', {'form_errors': form.errors, 'form':form})
+    #
+    # def get(self, request, *args, **kwargs):
+    #     # form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+    #     #
+    #     # if form.is_valid():
+    #     #     form.save()
+    #     form = ProfileForm()
+    #     return render(request, 'catalog/profile.html', {'form': form,
+    #                                                     'book': Book.objects.all(),
+    #                                                     'Profile': Profile.objects.filter(user=request.user)})
+    #
+
+
+    # ------------------------------------------------------------------------------------
+
+
+
+
+
+    # def form_valid(self, form):
+    #     us
+
 
 
 # ---------------------------------Commented Code---------------------------------------------------

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'catalog',
     'improve',
     'embed_video',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

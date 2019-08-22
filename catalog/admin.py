@@ -1,5 +1,5 @@
 from django.contrib import admin
-from catalog.models import Author, Genre, Book, BookInstance
+from catalog.models import Author, Genre, Book, BookInstance, Profile, FavBooks
 
 # Register your models here.
 
@@ -56,3 +56,7 @@ class BookInstanceAdmin(admin.ModelAdmin):
     )
 
     list_display = ('book', 'status', 'borrower', 'due_back', 'id')
+
+
+admin.site.register(Profile)
+admin.site.register(FavBooks)

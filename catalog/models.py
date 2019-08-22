@@ -115,3 +115,22 @@ class Language(models.Model):
         return self.name
 
 
+#
+FAV_BOOK_CHOICES = [(book['title'], book['title']) for book in Book.objects.values('title')]
+
+
+class FavBooks(models.Model):
+    fav_book = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.fav_book}'
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(blank=True, upload_to='images/', null=True)
+    number = models.CharField(max_length=10, blank=True, null=True)
+    fav_book = models.ManyToManyField(FavBooks, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.user.username}'

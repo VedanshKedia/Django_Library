@@ -2,7 +2,8 @@ from django import forms
 import datetime
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
-from catalog.models import BookInstance
+from catalog.models import BookInstance, FAV_BOOK_CHOICES, Profile
+from django.core.validators import FileExtensionValidator, RegexValidator
 
 
 class RenewBookForm(forms.Form):
@@ -35,3 +36,28 @@ class EmailForm(forms.Form):
 
 class SearchForm(forms.Form):
     text = forms.CharField(max_length=50, help_text="Type to Search")
+
+
+class ProfileForm(forms.ModelForm):
+    image = forms.ImageField(
+        validators=[FileExtensionValidator(allowed_extensions=['png', 'jpeg', 'jpg'])],
+        required=False
+    )
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,10}$',
+                                 message="Phone number must be entered in the format: '+919999999999'. Utpo 10 digits")
+    number = forms.CharField(validators=[phone_regex], max_length=10, required=False)
+    # fav_book = forms.MultipleChoiceField(choices=FAV_BOOK_CHOICES)
+
+    class Meta:
+        model = Profile
+        fields = ['image', 'number']
+        labels = {
+                  'image': _('Profile Photo'),
+                  'number': _('Mobile Number'),
+                  # 'fav_book': _('Favourite Books'),
+                  }
+        help_texts = {
+                      'image': _('Upload a jpeg or png Image'),
+                      'number': _('Enter 10 digit number starting with 9'),
+                      # 'fav_book': _('Select Multiple Books')
+        }

@@ -1,0 +1,309 @@
+{% extends "base_generic.html" %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% load widget_tweaks %}
+{#--------------------------------------Code---------------------------------------------#}
+
+{% block content %}
+
+
+{#    -----------------------------------Scripts------------------------------------------------#}
+
+
+{#    ------------------------------display image and number field---------------------#}
+
+<form method="post" id="profile_form" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+
+  {% for hidden_field in form.hidden_fields %}
+    {{ hidden_field }}
+  {% endfor %}
+
+  {% if form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+      {% for error in form.non_field_errors %}
+        {{ error }}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% for field in form.visible_fields %}
+    <div class="form-group">
+      {{ field.label_tag }}
+
+      {% if form.is_bound %}
+        {% if field.errors %}
+          {% render_field field class="form-control is-invalid" %}
+          {% for error in field.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% render_field field class="form-control is-valid" %}
+        {% endif %}
+      {% else %}
+        {% render_field field class="form-control" %}
+      {% endif %}
+
+      {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+
+    {#    ------------------------------display image and number field---------------------#}
+{#    ----------------------------------------------------------------------------------------#}
+    {#    ------------------------------display favourite books---------------------#}
+    <div class="form-group">
+
+        {#  -------------------------display list box-------#}
+        <label for="list">Favourite Books:</label>
+
+
+
+        <ul class="list-group" id = "list">
+            {% for each in profile.fav_book.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span id="list_content">{{ each }}</span>
+{#                    <span class="badge badge-primary badge-pill"><a href="#">-</a></span>#}
+                </li>
+            {% endfor %}
+        </ul>
+        {#  -------------------------display list box-------  #}
+
+
+        {#  -------------------------display dropdown -------  #}
+{#        <div class="dropdown show fav_book1 inline-group" style="display: block">#}
+{#            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                Add new favourite book#}
+{#            </a>#}
+{##}
+{#            <div class="dropdown-menu form-control" aria-labelledby="dropdownMenuLink">#}
+{#                {% for each in books.all %}#}
+{#                    <a class="dropdown-item" href="#" id="{{ each|escape }}" content="{{ each|escape }}" value="{{ each|escape }}">{{ each|force_escape }}</a>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#            <button type="button" id="display_text_box" class="btn btn-light fav_book1">Add Custom</button>#}
+{#        </div>#}
+
+
+
+
+
+
+
+    <select class="dropdown show display_text_box inline-group">
+        {% for each in books.all %}
+            <option class="dropdown-item" value="{{ each|force_escape }}">{{ each|force_escape }}</option>
+        {% endfor %}
+    </select>
+    <button type="button" id="display_text_box" class="btn btn-light display_text_box">Add Custom</button>
+
+
+
+        {#  -------------------------display dropdown -------  #}
+
+
+        <div class="text_input display_dropdown">
+            <input type="text" id="input_text_box" class="form-control fav_book2">
+            <button type="button" class="btn btn-dark" id="text_input_button">add</button>
+            <button type="button" id="display_list" class="btn btn-light fav_book2">Select from List</button>
+        </div>
+    </div>
+
+{#    ------------------------------ display favourite books ---------------------#}
+<input  type="hidden" id="fav_book_list" value="" name="fav_book_list">
+
+</form>
+
+
+    <div class="form-group">
+        <button id="submit_button" class="btn btn-primary">Submit</button>
+    </div>
+
+{#--------------------------------------------------------------------------------------------#}
+{#                                     Scripts                                                    #}
+{#    -----------------------------------------------------------------------------------------#}
+
+    <script>
+        $(document).ready(function(){
+            $(".text_input").hide();
+            $(".dropdown").show();
+
+            var optionTexts = [];
+            $(".form-group ul li span#list_content").each(function() { optionTexts.push($(this).text()) });
+
+            {#-----------------Toggle between text box and dropdown--------------------#}
+
+            $("#display_text_box").click(function(){
+                console.log("input field be shown");
+                $(".display_text_box").hide();
+                $(".text_input").show();
+            });
+            $("button.display_dropdown").click(function(){
+                console.log("input field be shown");
+                $(".dropdown").show();
+                $(".text_input").hide();
+            });
+
+            {#-------------------Dropdown Element to list box and---- PUSH TO ARRAY-------------------------------#}
+
+            $(".dropdown").click(function(){
+
+                var item= $(this).find("option:selected").val();
+
+                {#console.log(item);#}
+                $("ul.list-group").append(`<li class="list-group-item d-flex justify-content-between align-items-center">`
+                    + `<span>`
+                    + item
+                    + `</span>`
+                    + `</li>`);
+                optionTexts.push(item);
+
+            });
+
+
+            $("#id_number").blur(function(){
+                var a = $("#id_number").val();
+                var filter = /[1-9]{1}[0-9]{9}/;
+                if (filter.test(a)) {
+                    {#alert("correct", a);#}
+                }
+                else {
+                    alert("incorrect", a);
+                }
+            });
+
+            $("#id_number").focus(function () {
+
+                console.log("check image uploaded");
+
+                if($("#id_image").val() == false) {
+                    alert('upload an image');
+                    $("#id_image").focus();
+                }
+            });
+
+
+
+            $('INPUT[type="file"]').change(function(){
+                var ext = $('#id_image').val().split('.').pop().toLowerCase();
+                if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+                    alert('invalid extension!');
+                    $("#id_image").val("");
+                }
+            });
+
+
+
+
+
+
+            {#------------------Text box Element to LIST box and ARRAY----------------------------#}
+
+            $("#text_input_button").click(function(){
+
+                var item= $("#input_text_box").val();
+
+                if (item.replace(/^\s+|\s+$/g, "").length != 0){
+                    console.log("text box input");
+                console.log(item);
+                $("ul.list-group").append(`<li class="list-group-item d-flex justify-content-between align-items-center">`
+                    + `<span>`
+                    + item
+                    + `</span>`
+                    + `</li>`);
+                optionTexts.push(item);
+
+                $("#input_text_box").val("");
+                }
+                else {
+                    alert("No input found");
+                }
+            });
+
+
+
+
+            $(".list-group li").click(function() {
+                {#alert(this.id); // id of clicked li by directly accessing DOMElement property#}
+                {#alert($(this).attr('id')); // jQuery's .attr() method, same but more verbose#}
+                {#alert($(this).html()); // gets innerHTML of clicked li#}
+                {#alert($(this).text()); // gets text contents of clicked li#}
+                var removeItem = $(this).contents("span").text();
+                if(!$(this).hasClass("selected")) {
+                    $(this).addClass("selected");
+                    {#optionTexts.splice( $.inArray(removeItem, optionTexts), 1 );#}
+{#                    --#}
+                    {#alert($(this).text());#}
+                    {#optionTexts = jQuery.grep(optionTexts, function(value) {#}
+                    {#  return value != $(this).text();#}
+                    {# });#}
+{#                    =-------#}
+
+                    var result = optionTexts.filter(function(elem){
+                       return elem != removeItem;
+                    });
+                    optionTexts = result;
+                    console.log("remove item = ", removeItem);
+                    console.log("result=",result);
+                    console.log("optionText=",optionTexts);
+                }
+                else {
+                    $(this).removeClass("selected");
+                    optionTexts.push(removeItem);
+                    console.log("remove item = ", removeItem);
+                    {#console.log("result=",result);#}
+                    console.log("optionText=",optionTexts);
+                }
+
+            });
+
+
+
+            $("#remove_fav_book").click(function(){
+
+                var item= $(this).find("a:visited")(".form-group.list-group.list-group-item#list_content").val();
+
+                console.log("deleted item");
+
+                console.log(item);
+
+                optionTexts.pop(item);
+             });
+
+
+{#            --------------Submit Button to populate the array to Input and Submit------------------------------------------#}
+
+
+            $("#submit_button").click(function(){
+                console.log(optionTexts);
+                var myJSON = JSON.stringify(optionTexts);
+                {#document.getElementById("demo").innerHTML = myJSON;#}
+                console.log(myJSON);
+                $("#fav_book_list").val(myJSON);
+                {#$(".form-group ul li span#list_content").each(function() { optionTexts.push($(this).text()) });#}
+                $("#profile_form").submit()
+            });
+
+
+
+        });
+    </script>
+<div id="demo"></div>
+
+{% endblock %}
+
+{#---------------------------Decent Code-----------------------------------------------------#}
+
+{#{% block content %}#}
+{#  <form action="" method="post">#}
+{#    {% csrf_token %}#}
+{#    <table>#}
+{#    {{ form.as_table }}#}
+{#    </table>#}
+{#    <input type="submit" value="Submit">#}
+{#  </form>#}
+{#{% endblock %}#}

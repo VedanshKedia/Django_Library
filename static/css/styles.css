@@ -11,3 +11,11 @@ img {
 .row {
     padding-top: 10px;
 }
+
+.dropdown-item {
+    background-color: whitesmoke;
+}
+
+.selected {
+    text-decoration: line-through;
+}

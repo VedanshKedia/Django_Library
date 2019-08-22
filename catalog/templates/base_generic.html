@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     {% block scripts %}{% endblock %}
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -34,6 +34,9 @@
                     </li>
 
                     {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' request.user.pk %}">Profile</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'books' %}">All Books</a>
                         </li>
